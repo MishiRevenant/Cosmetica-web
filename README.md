@@ -1,4 +1,4 @@
-# Avanti Cosmetica - V2 Premium
+# Cosmetica Geri - V2 Premium
 
 Sitio web reimaginado con un diseño moderno "Glassmorphism", integrado con WhatsApp y Google Maps.
 

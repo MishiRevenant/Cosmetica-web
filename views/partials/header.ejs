@@ -1,26 +1,70 @@
 <header class="fixed w-full z-40 transition-all duration-300" id="main-header">
     <div class="absolute inset-0 bg-white/70 backdrop-blur-md border-b border-white/20 shadow-sm"></div>
-    <div class="container mx-auto px-6 py-4 relative flex justify-between items-center">
+    <div class="container mx-auto px-6 py-4 relative flex justify-between items-center z-50">
         <a href="/"
             class="text-3xl font-display font-medium text-premium-dark tracking-tighter hover:text-premium-gold transition-colors">
-            Avanti<span class="text-premium-gold">.</span>
+            Cosmetica <span class="text-premium-gold">Geri</span>
         </a>
+
+        <!-- Desktop Nav -->
         <nav class="hidden md:flex space-x-10">
             <a href="/" class="nav-link <%= page === 'home' ? 'text-premium-gold' : '' %>">Inicio</a>
             <a href="/servicios" class="nav-link <%= page === 'services' ? 'text-premium-gold' : '' %>">Servicios</a>
             <a href="/galeria" class="nav-link <%= page === 'gallery' ? 'text-premium-gold' : '' %>">Colección</a>
             <a href="/contacto" class="nav-link <%= page === 'contact' ? 'text-premium-gold' : '' %>">Contacto</a>
         </nav>
+
         <div class="hidden md:block">
             <a href="/contacto" class="btn-gold text-xs px-6 py-2">Reserva Ahora</a>
         </div>
+
         <!-- Mobile Menu Button -->
-        <button class="md:hidden text-premium-dark focus:outline-none">
+        <button id="mobile-menu-btn"
+            class="md:hidden text-premium-dark focus:outline-none p-2 rounded-lg hover:bg-gray-100 transition-colors">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                 </path>
             </svg>
         </button>
     </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-white/95 backdrop-blur-xl z-40 transform translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-8">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-premium-dark p-2">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <a href="/"
+            class="text-2xl font-display font-bold <%= page === 'home' ? 'text-premium-gold' : 'text-premium-dark' %>"
+            onclick="toggleMenu()">Inicio</a>
+        <a href="/servicios"
+            class="text-2xl font-display font-bold <%= page === 'services' ? 'text-premium-gold' : 'text-premium-dark' %>"
+            onclick="toggleMenu()">Servicios</a>
+        <a href="/galeria"
+            class="text-2xl font-display font-bold <%= page === 'gallery' ? 'text-premium-gold' : 'text-premium-dark' %>"
+            onclick="toggleMenu()">Colección</a>
+        <a href="/contacto"
+            class="text-2xl font-display font-bold <%= page === 'contact' ? 'text-premium-gold' : 'text-premium-dark' %>"
+            onclick="toggleMenu()">Contacto</a>
+
+        <a href="/contacto" class="btn-gold px-10 py-4 text-lg mt-8" onclick="toggleMenu()">Reserva tu cita</a>
+    </div>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            menu.classList.toggle('translate-x-full');
+            document.body.classList.toggle('overflow-hidden'); // Prevent scrolling when menu is open
+        }
+
+        if (btn) btn.addEventListener('click', toggleMenu);
+        if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
+    </script>
 </header>
 <div class="h-24"></div> <!-- Spacer -->
