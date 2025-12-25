@@ -1,0 +1,32 @@
+<%- include('partials/head') %>
+
+    <section class="py-24 container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-display font-bold mb-4">Lookbook</h1>
+            <div class="w-24 h-1 bg-premium-gold mx-auto"></div>
+        </div>
+
+        <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
+            <% gallery.forEach(item=> { %>
+                <div
+                    class="break-inside-avoid relative group rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-500">
+                    <img src="<%= item.src %>" alt="<%= item.alt %>"
+                        class="w-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+
+                    <!-- Overlay -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                        <p
+                            class="text-white font-display text-2xl translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            <%= item.alt %>
+                        </p>
+                        <span
+                            class="text-premium-gold text-sm uppercase tracking-widest mt-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">Ver
+                            Detalle</span>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </section>
+
+    <%- include('partials/foot') %>

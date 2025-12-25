@@ -1,0 +1,41 @@
+<%- include('partials/head') %>
+
+    <section class="py-24 container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-20">
+            <h1 class="text-5xl font-display font-bold text-premium-dark mb-6">Menú de Servicios</h1>
+            <p class="text-gray-500 font-light text-lg">Experiencias diseñadas para transformar y relajar. Elige tu
+                momento ideal.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <% services.forEach(service=> { %>
+                <div class="glass-morphism p-2 rounded-[2rem] hover:bg-white/80 transition-all duration-300 group">
+                    <div class="flex flex-col sm:flex-row h-full">
+                        <div class="sm:w-2/5 h-64 sm:h-auto relative overflow-hidden rounded-[1.5rem]">
+                            <img src="<%= service.image %>"
+                                class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        </div>
+                        <div class="sm:w-3/5 p-8 flex flex-col justify-center">
+                            <div class="flex justify-between items-baseline mb-3">
+                                <h3 class="text-2xl font-display font-bold text-premium-dark">
+                                    <%= service.title %>
+                                </h3>
+                                <span class="text-xl font-bold text-premium-gold">
+                                    <%= service.price %>
+                                </span>
+                            </div>
+                            <p class="text-gray-500 mb-6 font-light leading-relaxed text-sm">
+                                <%= service.description %>
+                            </p>
+                            <button
+                                class="self-start text-xs font-bold uppercase tracking-widest border-b border-premium-accent pb-1 text-premium-accent hover:text-premium-dark hover:border-premium-dark transition-all">
+                                Reservar Ahora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
+    </section>
+
+    <%- include('partials/foot') %>
